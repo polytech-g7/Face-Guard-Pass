@@ -11,11 +11,9 @@
     <packaging>pom</packaging>
 
     <modules>
-
-
-        <module>db-worker</module>
         <module>face-recognition</module>
         <module>time-tracking-module</module>
+        <module>worker-db</module>
     </modules>
 
 
