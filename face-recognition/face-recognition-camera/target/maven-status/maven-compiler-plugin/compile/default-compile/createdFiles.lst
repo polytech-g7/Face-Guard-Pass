@@ -1,0 +1,15 @@
+org/g7/robbo/opd/frc/exceptions/FailedToRunRaspistillException.class
+org/g7/robbo/opd/frc/enums/MeteringMode.class
+org/g7/robbo/opd/frc/examples/ShootTimelapse.class
+org/g7/robbo/opd/frc/RPiCamera.class
+org/g7/robbo/opd/frc/examples/DemoView.class
+org/g7/robbo/opd/frc/enums/Encoding.class
+org/g7/robbo/opd/frc/enums/AWB.class
+org/g7/robbo/opd/frc/examples/DemoView$1.class
+org/g7/robbo/opd/frc/examples/ShootStill.class
+org/g7/robbo/opd/frc/enums/ImageEffect.class
+org/g7/robbo/opd/frc/examples/DemoView$2.class
+org/g7/robbo/opd/frc/examples/ShootBufferedStill.class
+org/g7/robbo/opd/frc/examples/DemoView$3.class
+org/g7/robbo/opd/frc/enums/DRC.class
+org/g7/robbo/opd/frc/enums/Exposure.class

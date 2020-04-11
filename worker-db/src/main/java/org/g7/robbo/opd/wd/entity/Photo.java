@@ -26,4 +26,36 @@ public class Photo {
 
     public Photo() {
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Photo photo = (Photo) o;
+
+        if (id != null ? !id.equals(photo.id) : photo.id != null) return false;
+        if (path != null ? !path.equals(photo.path) : photo.path != null) return false;
+        if (creationTime != null ? !creationTime.equals(photo.creationTime) : photo.creationTime != null) return false;
+        return employee != null ? employee.equals(photo.employee) : photo.employee == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (path != null ? path.hashCode() : 0);
+        result = 31 * result + (creationTime != null ? creationTime.hashCode() : 0);
+        result = 31 * result + (employee != null ? employee.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id=" + id +
+                ", path='" + path + '\'' +
+                ", creationTime=" + creationTime +
+                ", employee=" + employee +
+                '}';
+    }
 }
