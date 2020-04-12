@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class FaceRecognitionAdapter {
 
-    @Autowired
-    private JFaceDetection faceDetection;
+    private JFaceDetection faceDetection = new JFaceDetection();
 
     //out CameraAdapter.sendPhoto
     public void getPhoto(String photoPath) {

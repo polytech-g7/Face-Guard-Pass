@@ -26,7 +26,6 @@ public class JFaceDetection {
 
     private static Logger LOGGER = LoggerFactory.getLogger(JFaceDetection.class);
 
-    @Autowired
     FaceRecognitionAdapter faceRecognitionAdapter;
 
     public JFaceDetection() {

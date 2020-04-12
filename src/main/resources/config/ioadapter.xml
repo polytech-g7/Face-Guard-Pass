@@ -5,26 +5,22 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
 
-    <int:channel id="channelEmptyPhoto"/>
-
-    <int:inbound-channel-adapter id="inPhotoAdapter" channel="channelEmptyPhoto" method="sendPhoto">
+    <int:channel id="emptyPhotoChannel"/>
+    <int:inbound-channel-adapter id="inPhotoAdapter" channel="emptyPhotoChannel" method="sendPhoto">
         <bean class="org.g7.robbo.opd.fgs.camera.CameraAdapter"/>
+        <int:poller fixed-rate="1000"/>
     </int:inbound-channel-adapter>
-
-    <int:outbound-channel-adapter id="outPhotoAdapter" channel="channelEmptyPhoto" method="getPhoto">
+    <int:outbound-channel-adapter id="outPhotoAdapter" channel="emptyPhotoChannel" method="getPhoto">
         <bean class="org.g7.robbo.opd.fgs.faceRecognition.FaceRecognitionAdapter"/>
     </int:outbound-channel-adapter>
 
 
-    <int:channel id="channelFace"/>
-
-    <int:inbound-channel-adapter id="inFaceAdapter" channel="channelEmptyPhoto" method="sendFace">
+    <int:channel id="faceChannel"/>
+    <int:inbound-channel-adapter id="inFaceAdapter" channel="faceChannel" method="sendFace">
         <bean class="org.g7.robbo.opd.fgs.faceRecognition.FaceRecognitionAdapter"/>
-        <int:poller fixed-rate="500"/>
+        <int:poller fixed-rate="1000"/>
     </int:inbound-channel-adapter>
-
-    <int:outbound-channel-adapter id="outFaceAdapter" channel="channelEmptyPhoto" method="getFace">
+    <int:outbound-channel-adapter id="outFaceAdapter" channel="faceChannel" method="getFace">
         <bean class="org.g7.robbo.opd.fgs.faceInit.FaceInitAdapter"/>
     </int:outbound-channel-adapter>
-
 </beans>
