@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
+
+    <int:channel id="channelEmptyPhoto"/>
+
+    <int:inbound-channel-adapter id="inAdapter" channel="channelEmptyPhoto" method="sendPhoto">
+        <bean class="org.g7.robbo.opd.fgs.camera.CameraAdapter"/>
+        <int:poller fixed-rate="500"/>
+    </int:inbound-channel-adapter>
+
+    <int:outbound-channel-adapter id="outAdapter" channel="channelEmptyPhoto" method="getPhoto">
+        <bean class="org.g7.robbo.opd.fgs.faceRecognition.FaceRecognitionAdapter"/>
+    </int:outbound-channel-adapter>
+
+</beans>
