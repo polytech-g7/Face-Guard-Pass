@@ -5,7 +5,8 @@ package org.g7.robbo.opd.fgs.camera;
  */
 public class CameraAdapter {
 
+    //in FaceRecognitionAdapter.getPhoto
     public String sendPhoto() {
-        return "hi";
+        return "src/main/resources/example/31.JPG";
     }
 }

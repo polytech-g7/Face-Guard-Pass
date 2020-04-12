@@ -9,7 +9,6 @@
 
     <int:inbound-channel-adapter id="inPhotoAdapter" channel="channelEmptyPhoto" method="sendPhoto">
         <bean class="org.g7.robbo.opd.fgs.camera.CameraAdapter"/>
-        <int:poller fixed-rate="500"/>
     </int:inbound-channel-adapter>
 
     <int:outbound-channel-adapter id="outPhotoAdapter" channel="channelEmptyPhoto" method="getPhoto">
