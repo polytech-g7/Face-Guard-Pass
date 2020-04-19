@@ -65,7 +65,7 @@ public class JFaceDetection {
 
             Imgcodecs.imwrite(path ,markedImage );
 
-            faceRecognitionAdapter.sendFace(path);
+            //faceRecognitionAdapter.sendFace(path);
         }
 
         Imgcodecs.imwrite("src/main/resources/example/dJgDqTSs94c_out.jpg", src);
@@ -74,7 +74,7 @@ public class JFaceDetection {
         System.out.println("Done");
     }
 
-  /*  public static void main(String[] args) {
+/*    public static void main(String[] args) {
         String imgFile = "src/main/resources/example/31.JPG";
         JFaceDetection d = new JFaceDetection();
         d.findFaces(imgFile);
