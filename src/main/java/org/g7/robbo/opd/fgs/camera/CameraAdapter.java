@@ -7,13 +7,15 @@ import org.springframework.scheduling.annotation.Scheduled;
 /**
  * @author Orlov Diga
  */
-@EnableScheduling
+/*@EnableScheduling*/
 public class CameraAdapter {
 
     public CameraAdapter() {
     }
 
+/*
     @Scheduled(fixedRate = 500)
+*/
     //in FaceRecognitionAdapter.getPhoto
     public String sendPhoto() {
         return "src/main/resources/example/31.JPG";
