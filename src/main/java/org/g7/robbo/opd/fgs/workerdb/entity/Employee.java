@@ -1,47 +1,35 @@
 package org.g7.robbo.opd.fgs.workerdb.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Orlov Diga
  */
-
 @Entity
 @Table(name = "employee")
 public class Employee {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "surname")
     private String surname;
 
-    @Column(name = "creation_time")
     private LocalDateTime creationTime;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    @Fetch(FetchMode.JOIN)
-    @JsonIgnore
     private List<Photo> photo;
 
     public Employee() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Long getId() {
         return id;
     }
@@ -50,6 +38,7 @@ public class Employee {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -58,6 +47,7 @@ public class Employee {
         this.name = name;
     }
 
+    @Column(name = "surname")
     public String getSurname() {
         return surname;
     }
@@ -66,6 +56,7 @@ public class Employee {
         this.surname = surname;
     }
 
+    @Column(name = "creation_time")
     public LocalDateTime getCreationTime() {
         return creationTime;
     }
@@ -74,6 +65,9 @@ public class Employee {
         this.creationTime = creationTime;
     }
 
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
+    @JsonIgnore
     public List<Photo> getPhoto() {
         return photo;
     }

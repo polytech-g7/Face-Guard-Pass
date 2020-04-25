@@ -9,7 +9,10 @@ import org.g7.robbo.opd.fgs.workerdb.service.PhotoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.util.List;
 import java.util.Set;
@@ -20,25 +23,28 @@ import static org.g7.robbo.opd.fgs.l10n.LogEventMessage.METHOD_CALL;
 /**
  * @author Orlov Diga
  */
+@Component
 public class StartInit {
 
-    private final FaceRecognizer faceRecognizer;
+    private FaceRecognizer faceRecognizer;
 
     private final EmployeeService employeeService;
 
     private static Logger LOG = LoggerFactory.getLogger(StartInit.class);
 
     @Autowired
-    public StartInit(FaceRecognizer faceRecognizer, EmployeeService employeeService) {
+    public StartInit(EmployeeService employeeService) {
         LOG.info("Start initialization neural network");
 
-        this.faceRecognizer = faceRecognizer;
+        this.faceRecognizer = FaceRecognizer.create();
         this.employeeService = employeeService;
-
-        neuralNetworkInit();
     }
-    private void neuralNetworkInit() {
+
+    @PostConstruct
+    public void neuralNetworkInit() {
         LOG.info(METHOD_CALL, "neuralNetworkInit");
+
+        FaceRecognizer faceRecognizer = FaceRecognizer.create();
 
         List<Employee> employees = employeeService.findAll();
 
@@ -46,10 +52,11 @@ public class StartInit {
 
         employees.forEach(e -> faceRecognizer.calculateFullFeaturesForUser(e.getName(), castPhotoPathsToFiles(e)));
     }
+
     private File[] castPhotoPathsToFiles(Employee employee) {
-        return (File[]) employee.getPhoto()
+        return employee.getPhoto()
                 .stream()
-                .map(photo -> new File(photo.getPath())).toArray();
+                .map(photo -> new File(photo.getPath())).toArray(File[]::new);
     }
 
 

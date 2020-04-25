@@ -1,15 +1,7 @@
 package org.g7.robbo.opd.fgs.workerdb.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @author Orlov Diga
@@ -19,23 +11,19 @@ import java.util.Date;
 @Table(name = "photo")
 public class Photo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "path")
     private String path;
 
-    @Column(name = "creation_time")
     private LocalDateTime creationTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id",  nullable=false)
     private Employee employee;
 
     public Photo() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Long getId() {
         return id;
     }
@@ -44,6 +32,7 @@ public class Photo {
         this.id = id;
     }
 
+    @Column(name = "path")
     public String getPath() {
         return path;
     }
@@ -52,6 +41,7 @@ public class Photo {
         this.path = path;
     }
 
+    @Column(name = "creation_time")
     public LocalDateTime getCreationTime() {
         return creationTime;
     }
@@ -60,6 +50,8 @@ public class Photo {
         this.creationTime = creationTime;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id",  nullable=false)
     public Employee getEmployee() {
         return employee;
     }
