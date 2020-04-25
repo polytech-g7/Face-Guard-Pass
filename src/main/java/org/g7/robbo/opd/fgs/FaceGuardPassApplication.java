@@ -23,8 +23,6 @@ import static org.g7.robbo.opd.fgs.l10n.LogEventMessage.METHOD_CALL;
 @SpringBootApplication
 public class FaceGuardPassApplication {
 
-    //Logger LOG = LoggerFactory.getLogger(FaceGuardPassApplication.class);
-
     public static void main(String[] args) {
         SpringApplication.run(FaceGuardPassApplication.class, args);
     }
@@ -34,9 +32,6 @@ public class FaceGuardPassApplication {
     public CommandLineRunner mappingDemo(EmployeeService employeeService) {
 
         return args -> {
-            LOG.info("start mappingDemo...");
-
-            neuralNetworkInit(employeeService);
 *//*
             Employee employee = new Employee();
 
@@ -73,21 +68,4 @@ public class FaceGuardPassApplication {
         };
     }*/
 
-    /*private void neuralNetworkInit(EmployeeService employeeService) {
-        LOG.info(METHOD_CALL, "neuralNetworkInit");
-
-        FaceRecognizer faceRecognizer = FaceRecognizer.create();
-
-        List<Employee> employees = employeeService.findAll();
-
-        LOG.info(FIND_ALL, employees.size(), Employee.class);
-
-        employees.forEach(e -> faceRecognizer.calculateFullFeaturesForUser(e.getName(), castPhotoPathsToFiles(e)));
-    }
-
-    private File[] castPhotoPathsToFiles(Employee employee) {
-        return employee.getPhoto()
-                .stream()
-                .map(photo -> new File(photo.getPath())).toArray(File[]::new);
-    }*/
 }
