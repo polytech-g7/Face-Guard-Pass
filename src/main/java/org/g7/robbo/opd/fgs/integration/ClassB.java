@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 /**
  * @author Orlov Diga
  */
+/*
 @Service("bService")
+*/
 public class ClassB {
 
     public ClassB() {

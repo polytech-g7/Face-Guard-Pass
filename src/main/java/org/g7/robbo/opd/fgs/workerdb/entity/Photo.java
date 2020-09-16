@@ -1,30 +1,63 @@
 package org.g7.robbo.opd.fgs.workerdb.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * @author Orlov Diga
  */
 
 @Entity
+@Table(name = "photo")
 public class Photo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "path")
     private String path;
 
-    @Column(name = "creation_time")
-    private Date creationTime;
+    private LocalDateTime creationTime;
 
-    @ManyToOne()
-    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
     public Photo() {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Column(name = "path")
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    @Column(name = "creation_time")
+    public LocalDateTime getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(LocalDateTime creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id",  nullable=false)
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override

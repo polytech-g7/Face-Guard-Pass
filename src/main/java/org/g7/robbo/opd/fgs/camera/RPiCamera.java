@@ -3,6 +3,9 @@ package org.g7.robbo.opd.fgs.camera;
 
 import org.g7.robbo.opd.fgs.camera.enums.*;
 import org.g7.robbo.opd.fgs.camera.exceptions.FailedToRunRaspistillException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -40,7 +43,12 @@ import java.util.*;
  *
  * @author Andrew Dillon
  */
+/*
+@Service
+*/
 public class RPiCamera {
+
+    private static final String SAVE_DIR = "src/main/resources/photo/raw";
 
     private String prevCommand;
     private String saveDir;
@@ -57,7 +65,7 @@ public class RPiCamera {
      * @throws FailedToRunRaspistillException
      */
     public RPiCamera() throws FailedToRunRaspistillException {
-        this("/home/pi/Pictures");
+        this("src/main/resources/photo/raw");
     }
 
     /**
